@@ -1,0 +1,49 @@
+{% load static %}
+{% block content %}
+<div class="row my-3">
+    <div class="col-12 mx-auto"> 
+        <div class="card bg-light">
+            <div class="card-body d-flex align-items-center justify-content-center" style="height:px;">
+                <form id="searchForm" class="w-100" method="get" action="{% url 'job_search' %}">
+                    <div class="input-group me-3 container">
+                        <div class="container">
+                            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 text-center">
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="A" {% if typework == 'บริการลูกค้า' %}selected{% endif %}>บริการลูกค้า</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="B" {% if typework == 'ช่างเทคนิค' %}selected{% endif %}>ช่างเทคนิค</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="การตลาด" {% if typework == 'การตลาด' %}selected{% endif %}>การตลาด</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="การคมนาคมขนส่ง" {% if typework == 'การคมนาคมขนส่ง' %}selected{% endif %}>การคมนาคมขนส่ง</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="การค้าระหว่างประเทศ" {% if typework == 'การค้าระหว่างประเทศ ' %}selected{% endif %}>การค้าระหว่างประเทศ</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="งานขาย" {% if typework == 'งานขาย' %}selected{% endif %}>งานขาย</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="ไอที/คอมพิวเตอร์" {% if typework == 'ไอที/คอมพิวเตอร์' %}selected{% endif %}>ไอที/คอมพิวเตอร์</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2 " type="submit" name="Typework" value="การเงิน" {% if typework == 'การเงิน' %}selected{% endif %}>การเงิน</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2" type="submit" name="Typework" value="ฝ่ายผลิต/ผลิตภัณฑ์" {% if typework == 'ฝ่ายผลิต/ผลิตภัณฑ์' %}selected{% endif %}>ฝ่ายผลิต/ผลิตภัณฑ์</button></div>
+                              </div>
+                              <div class="col">
+                                <div class="p-3 border bg-info"><button class="btn btn-info mx-2 " type="submit" name="Typework" value="การก่อสร้าง/การตกแต่ง" {% if typework == 'การก่อสร้าง/การตกแต่ง' %}selected{% endif %}>การก่อสร้าง</button></div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

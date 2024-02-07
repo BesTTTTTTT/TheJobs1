@@ -1,0 +1,44 @@
+{% load static %}
+{% block content %}
+<div class="container my-3 d-flex justify-content-center align-items-center shadow rounded">
+    <div class="row">
+        <div class="col-12 search-container">
+            <img src= "https://www.uc.edu/content/dam/uc/news/units/one-stop/summer-jobs.png/_jcr_content/renditions/cq5dam.web.1280.1280.png" class="background-image card-img-top img-thumbnail" alt="...">
+           
+            <div class="search-card">
+                <form id="searchForm" class="w-100 d-flex" method="get" action="{% url 'job_search' %}">
+                    <div class="input-group me-3">
+                        <input class="form-control" type="text" name="q" placeholder="ค้นหางาน" aria-label="Search">
+                    </div>
+                    <button class="btn btn-primary" type="submit">ค้นหา</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .search-container {
+      position: relative;
+    }
+  
+    .background-image {
+      height: 450px;
+      width: 2000px;
+      object-fit: cover;
+      filter: brightness(70%); 
+    }
+  
+    .search-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 70%; 
+    }
+    
+  </style>
+{% endblock content %}

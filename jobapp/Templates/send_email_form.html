@@ -1,0 +1,39 @@
+{% extends 'base1.html' %}   
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow rounded">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">ส่งอีเมล</h2>
+                    <form method="post" action="{% url 'send_emails' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="company_name" class="form-label">ชื่อบริษัท:</label>
+                            <input type="text" class="form-control" id="company_name" name="company_name" value="{{ user.employee.company.company_name }}" readonly> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="approval" class="form-label">การอนุมัติ:</label>
+                            <select class="form-select" id="approval" name="approval">
+                                <option value="อนุมัติ">อนุมัติ</option>
+                                <option value="ปฏิเสธ">ปฏิเสธ</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">อีเมล:</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ email }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">ข้อความ:</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">ส่งอีเมล</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

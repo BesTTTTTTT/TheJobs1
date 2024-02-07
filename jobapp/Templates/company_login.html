@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<div class="container my-3 d-flex justify-content-center align-items-center shadow rounded">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center mb-4 my-3">เข้าสู่ระบบ</h2>
+
+      <form method="post" action="{% url 'company_login' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="company" class="form-label">Company:</label>
+            <select name="company" class="form-select" required>
+              {% for company in companies %}
+                <option value="{{ company.id }}">{{ company.company_name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username:</label>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+
+        
+        <button type="submit" class="btn btn-primary my-3">เข้าสู่ระบบ</button>
+      </form>
+      <p> เริ่มต้นการใช้งาน : <a href="register_conpany" class="link-offset-0 link-underline link-underline-opacity-0">สมัครสมาชิก</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

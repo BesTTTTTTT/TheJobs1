@@ -1,0 +1,23 @@
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+  <h1 class="mt-4 mb-4">Search Results</h1>
+  <p>Showing results for: "{{ query }}"</p>
+  
+  {% if jobs %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      {% for job in jobs %}
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'job_detail' pk=job.pk %}">{{ job.title }}</a></h5>
+              <p class="card-text">{{ job.company }}, {{ job.location }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="mt-4">ไม่พบงาน.</p>
+  {% endif %}
+{% endblock %} {% endcomment %}

@@ -1,0 +1,57 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="card bg-info"> 
+          <div class="card-body">
+            <table class="table table-bordered bg-light">
+              <thead class="thead-dark">
+                <tr>
+                  <th>ชื่อ</th>
+                  <th>นามสกุล</th>
+                  <th>ที่อยู่</th>
+                  <th>จังหวัด</th>
+                  <th>รหัสไปรษณีย์</th>
+                  <th>บริษัท</th>
+                  <th>ตำแหน่งที่สมัคร</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for custom_obj in custom_objects %}
+                <tr>
+                  <td>{{ custom_obj.custom_name }}</td>
+                  <td>{{ custom_obj.custom_lastname }}</td> 
+                  <td>{{ custom_obj.address }}</td>
+                  <td>{{ custom_obj.province }}</td>
+                  <td>{{ custom_obj.zip }}</td>
+                  <td>{{ custom_obj.company.company_name }}</td>
+                  <td>{{ custom_obj.position_applied }}</td>
+                  <td class="text-center">
+                    <a href="{% url 'cst_detail' pk=custom_obj.pk %}" class="btn btn-success">รายละเอียด</a>
+                    <a href="#" class="btn btn-danger" onclick="confirmDelete('{{ custom_obj.custom_id }}')">ลบข้อมูล</a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // ฟังก์ชันสำหรับการแสดงกล่องข้อความเตือนก่อนลบข้อมูล
+    function confirmDelete(customId) {
+        // แสดงกล่องข้อความเตือนและให้ผู้ใช้ตอบ
+        if (confirm("คุณแน่ใจหรือไม่ที่ต้องการลบข้อมูลนี้?")) {
+            // ถ้าผู้ใช้กด "ตกลง" ให้ redirect ไปยัง URL ที่มีการลบด้วย customId ที่ระบุ
+            window.location.href = "{% url 'delete_custom' 0 %}".replace("0", customId);
+        }
+    }
+  </script>
+{% endblock %}

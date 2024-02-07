@@ -1,0 +1,25 @@
+{% extends "base.html" %} 
+{% block content %}
+<div class="container my-3 d-flex justify-content-center align-items-center shadow rounded">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center mb-4">สมัครสมาชิก</h2>
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+        </div>
+        <!-- Other registration fields -->
+        <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
+      </form>
+      <p></p> 
+      <p> มีบัญชีผู้ใช้อยู่แล้ว? <a href="/login" class="link-offset-0 link-underline link-underline-opacity-0">เข้าสู่ระบบ</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

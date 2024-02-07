@@ -1,0 +1,76 @@
+{% extends "base1.html" %}
+{% block content %}
+<div class="container my-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow rounded">
+                <div class="card-body bg-light">
+                    <form action="{% url 'your_edit_view_name' pk=job.pk %}" method="POST">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label">ชื่องาน:</label>
+                            <input type="text" class="form-control" name="title" value="{{ job.title }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="description" class="form-label">รายละเอียดงาน:</label>
+                            <textarea class="form-control" name="description" rows="4" required>{{ job.description }}</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="location" class="form-label">สถานที่:</label>
+                            <input type="text" class="form-control" name="location" value="{{ job.location }}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="time" class="form-label">วันที่:</label>
+                            <input type="date" class="form-control" name="time" value="{{ job.time }}" required>
+                        </div>  
+
+                        <div class="mb-3">
+                            <label for="salary" class="form-label">เงินเดือน:</label>
+                            <input type="text" class="form-control" name="salary" value="{{ job.salary }}" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning">บันทึกการแก้ไข</button>
+                        <button type="button" class="btn btn-danger float-end" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                          ลบงาน
+                      </button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="confirmDeleteModalLabel">ยืนยันการลบงาน</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              คุณต้องการลบงานนี้ ใช่หรือไม่?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ยกเลิก</button>
+            <form action="{% url 'delete_job' job.pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">ลบงาน</button>
+            </form>
+        </div>        
+      </div>
+  </div>
+</div>
+{% endblock %}
+{% block javascript %}
+    <script>
+        function confirmDelete() {
+            if (confirm("คุณต้องการลบงานนี้ใช่หรือไม่?")) {
+                window.location.href = "{% url 'delete_job' job.pk %}";
+            }
+        }
+    </script>
+{% endblock %}

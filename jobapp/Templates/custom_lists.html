@@ -1,0 +1,47 @@
+<!-- ไฟล์ custom_objects_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card bg-info"> 
+                <div class="card-body">
+                    <table class="table table-bordered bg-light">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ชื่อ</th>
+                                <th>นามสกุล</th>
+                                <th>ที่อยู่</th>
+                                <th>จังหวัด</th>
+                                <th>รหัสไปรษณีย์</th>
+                                <th>บริษัท</th>
+                                <th>ตำแหน่งที่สมัคร</th>
+                                <th>สถานะ</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for custom_obj in custom_objects %}
+                            <tr>
+                                <td>{{ custom_obj.custom_name }}</td>
+                                <td>{{ custom_obj.custom_lastname }}</td> 
+                                <td>{{ custom_obj.address }}</td>
+                                <td>{{ custom_obj.province }}</td>
+                                <td>{{ custom_obj.zip }}</td>
+                                <td>{{ custom_obj.company.company_name }}</td>
+                                <td>{{ custom_obj.position_applied }}</td>
+                                <td>{{ custom_obj.status }}</td> 
+                                <td class="text-center">
+                                
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

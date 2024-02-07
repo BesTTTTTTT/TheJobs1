@@ -1,0 +1,49 @@
+{% extends 'base1.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+      <div class="col-md-8">
+          <div class="card">
+              <div class="card-body">
+                  <h1 class="text-center mb-4">รายละเอียดผู้สมัคร</h1>
+                  <p class="fs-5"><strong>วันที่สมัคร:</strong> {{ custom_instance.date_applied }}</p>
+                  <div class="text-center mb-4">
+                      <img src="{{ custom_instance.cv_file.url }}" alt="{{ custom_instance.cv_file.name }}" style="max-width: 200px; max-height: 200px;" class="img-fluid">
+                  </div>
+                  <div class="row mb-3">
+                    <div class="row-md-6">
+                          <div class="border p-3">
+                              <p class="fs-5"><strong>ชื่อ:</strong> {{ custom_instance.custom_name }}</p>
+                              <p class="fs-5"><strong>นามสกุล:</strong> {{ custom_instance.custom_lastname }}</p>
+                              <p class="fs-5"><strong>อีเมล:</strong> {{ custom_instance.email }}</p>
+                              <p class="fs-5"><strong>ที่อยู่:</strong> {{ custom_instance.address }}</p>
+                          </div>
+                      </div>
+                      <div class="row-md-6">
+                          <div class="border p-3">
+                              <p class="fs-5"><strong>จังหวัด:</strong> {{ custom_instance.province }}</p>
+                              <p class="fs-5"><strong>รหัสไปรษณีย์:</strong> {{ custom_instance.zip }}</p>
+                              <p class="fs-5"><strong>ตำแหน่งที่สมัคร:</strong> {{ custom_instance.position_applied }}</p>
+                          </div>
+                      </div>
+                        <div class="row-md-6">
+                              <div class="border p-3">
+                                  <p class="fs-5"><strong>เพศ:</strong> {{ custom_instance.gender }}</p>
+                                  <p class="fs-5"><strong>อายุ:</strong> {{ custom_instance.source }}</p>
+                                  <p class="fs-5"><strong>เบอร์โทรศัพท์:</strong> {{ custom_instance.tal_phon }}</p>
+                              </div>
+                          </div>
+                
+                  </div>
+                  <div class="text-center">
+                      <a href="{% url 'send_email_form' email=custom_instance.email %}" class="btn btn-primary">ไปหน้าส่งอีเมล</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}

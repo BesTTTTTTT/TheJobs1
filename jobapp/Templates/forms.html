@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title text-center">เเบบฟร์อมสมัครงาน</h1>
+            <form class="row g-3" action="{% url 'apply_custom' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="company" value="{{ job.company }}"> 
+              <input type="hidden" name="position_applied" value="{{ job.title }}">
+              <div class="col-md-6">
+                <label for="validationDefault01" class="form-label">ชื่อ</label>
+                <input type="text" class="form-control" id="validationDefault01" name="custom_name" required>
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">นามสกุล</label>
+                <input type="text" class="form-control" id="validationDefault02" name="custom_lastname" required>
+              </div>
+              <div class="col-md-12">
+                <label for="validationDefaultUsername" class="form-label">อีเมล</label>
+                <div class="input-group">
+                  <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                  <input type="email" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" name="email" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault03" class="form-label">ที่อยู่</label>
+                <input type="text" class="form-control" id="validationDefault03" name="address" required>
+              </div>
+              <div class="col-md-3">
+                <label for="validationDefault04" class="form-label">จังหวัด</label>
+                <select class="form-select" id="validationDefault04" name="province" required>
+                    <option selected disabled value="">เลือก...</option>
+                    <option>กรุงเทพมหานคร</option>
+                    <option>สมุทรปราการ</option>
+                    <option>นนทบุรี</option>  
+                    <option>ยะลา</option>
+                    <option>นราธิวาส</option>
+                    <option>พัทลุง</option>
+                    <option>ปัตตานี</option>
+                    <option>ยะลา</option>
+                </select>
+            </div>
+            
+              <div class="col-md-3">
+                <label for="validationDefault05" class="form-label">รหัสไปรษณีย์</label>
+                <input type="text" class="form-control" id="validationDefault05" required name="zip">
+              </div>
+              <div class="col-md-3">
+                <label for="gender" class="form-label">เพศ</label>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option value="" selected disabled>โปรดเลือกเพศ</option>
+                    <option value="ชาย">ชาย</option>
+                    <option value="หญิง">หญิง</option>
+                    <option value="อื่นๆ">อื่นๆ</option>
+                </select>
+            </div>
+            
+              <div class="col-md-3">
+                <label for="validationDefault07" class="form-label">อายุ</label>
+                <input type="text" class="form-control" id="validationDefault07" name="source">
+              </div>
+              <div class="col-md-6">
+                <label for="validationDefault10" class="form-label">เบอร์โทรศัพท์</label>
+                <input type="text" class="form-control" id="validationDefault10" name="tal_phon" required>
+              </div>
+              <center>
+              <div class="col-md-6">
+                <label for="validationDefault11" class="form-label">ใส่รูปภาพ</label>
+                <input class="form-control" type="file" id="validationDefault11" name="cv_file">
+              </div>
+            </center>
+              <div class="col-md-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+                  <label class="form-check-label" for="invalidCheck2">
+                    ยอมรับเงื่อนไขและข้อตกลง
+                  </label>
+                </div>
+              </div>
+      
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">สมัครงาน</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

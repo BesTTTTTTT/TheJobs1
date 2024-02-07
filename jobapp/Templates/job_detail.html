@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title">{{ job.title }}</h1>
+          <p class="card-text"><strong>บริษัท: </strong>{{ job.company }}</p>
+          <p class="card-text"><strong>ที่อยู่: </strong>{{ job.location }}</p>
+          <p class="card-text"><strong>เงินเดือน: </strong>{{ job.salary }}</p>
+          <hr>
+          <h2 class="card-title">รายละเอียดงาน</h2>
+          <p class="card-text">{{ job.description }}</p>
+          <a href="{% url 'your_forms_view_name' company=job.company.company_name title=job.title %}" class="btn btn-primary">สมัครงาน</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

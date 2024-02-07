@@ -1,0 +1,46 @@
+{% extends "base1.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">เพิ่มงาน</h2>
+            <form method="post" action="{% url 'add_jobcompany' %}" class="row g-3">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <label for="title" class="form-label">ชื่องาน:</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="location" class="form-label">สถานที่:</label>
+                    <input type="text" name="location" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <label for="description" class="form-label">รายละเอียดงาน:</label>
+                    <textarea name="description" class="form-control" required></textarea>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="Typework" class="form-label">ประเภทงาน:</label>
+                    <select name="Typework" class="form-select" required>
+                        <option value="A">บริการลูกค้า</option>
+                        <option value="B">ช่างเทคนิค</option>
+                        <option value="C">การตลาด</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="salary" class="form-label">เงินเดือน:</label>
+                    <input type="text" name="salary" class="form-control" required>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">เพิ่มงาน</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
